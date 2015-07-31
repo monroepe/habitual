@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'spring',        group: :development
 gem 'devise'
 gem 'pickadate-rails'
+gem 'foundation-rails', '5.4.3.1'
 gem 'simple_form'
 gem 'quiet_assets', group: :development
 gem 'font-awesome-rails'
