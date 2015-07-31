@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :habits
   validates :first_name, :last_name, presence: true
 
   # Include default devise modules. Others available are:
