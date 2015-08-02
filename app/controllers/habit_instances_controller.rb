@@ -1,9 +1,11 @@
 class HabitInstancesController < ApplicationController
   before_action :authenticate_user!
+  include HabitInstanceHelper
 
   def index
-    time = Time.new
-    @habit_instances = current_user.habit_instances.find(time.strftime("%m/%d/%Y"))
+    self.create_habit_instances
+    today = Time.new.strftime("%m/%d/%Y")
+    @habit_instances = current_user.habit_instances.find(conditions: {date: today})
   end
 
   def show
