@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731223634) do
+ActiveRecord::Schema.define(version: 20150802174151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "habit_instances", force: true do |t|
+    t.integer  "habit_id",                   null: false
+    t.integer  "user_id",                    null: false
+    t.date     "date",                       null: false
+    t.boolean  "complete",   default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "habits", force: true do |t|
     t.string   "title",       null: false

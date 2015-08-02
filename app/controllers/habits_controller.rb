@@ -25,11 +25,11 @@ class HabitsController < ApplicationController
   end
 
   def edit
-    @habit = current_user.habit
+    @habit = current_user.habit.find(params[:id])
   end
 
   def update
-    @habit = current_user.habit
+    @habit = current_user.habit.find(params[:id])
 
     if @habit.update(habit_params)
       redirect_to user_habits_path(current_user), notice: "Habit updated successfully!"
@@ -39,7 +39,7 @@ class HabitsController < ApplicationController
   end
 
   def destroy
-    @habit = current_user.habit
+    @habit = current_user.habit.find(params[:id])
 
     @habit.destroy
 
