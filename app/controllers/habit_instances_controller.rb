@@ -15,7 +15,8 @@ class HabitInstancesController < ApplicationController
   def update
     @habit_instance = current_user.habit_instances.find(params[:id])
 
-    @habit.update(habit_params)
+    @habit_instance.update(habit_params)
+    redirect_to :back
   end
 
   private

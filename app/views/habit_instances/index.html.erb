@@ -2,10 +2,21 @@
 
 <ul>
   <% @habit_instances.each do |habit_instance| %>
+    <% binding.pry %>
     <% if habit_instance.complete == false %>
-      <li class="habits"><%= link_to habit_instance.habit.title, user_habit_path(current_user, habit_instance.habit) %> <%= link_to "Incomplete", "#" %></li>
+      <li class="habits"><%= link_to habit_instance.habit.title, user_habit_path(current_user, habit_instance.habit) %>
+      <%= simple_form_for [current_user, habit_instance] do |f| %>
+        <%= f.hidden_field :complete, value: true %>
+        <%= f.submit "Complete", class: "btn" %>
+      <% end %>
+      </li>
     <% else %>
-      <li class="habits"><%= link_to habit_instance.habit.title, user_habit_path(current_user, habit_instance.habit) %> <%= link_to "Complete", "#" %></li>
+      <li class="habits"><%= link_to habit_instance.habit.title, user_habit_path(current_user, habit_instance.habit) %>
+      <%= simple_form_for [current_user, habit_instance] do |f| %>
+        <%= f.hidden_field :complete, value: false %>
+        <%= f.submit "Complete", class: "btn" %>
+      <% end %>
+      </li>
     <% end %>
   <% end %>
 </ul>
