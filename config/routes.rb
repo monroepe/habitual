@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :habits
   end
 
-  resources :habits, only: [] do
+  resources :users, only: [] do
     resources :habit_instances
   end
 end

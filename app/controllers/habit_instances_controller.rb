@@ -4,26 +4,18 @@ class HabitInstancesController < ApplicationController
 
   def index
     self.create_habit_instances
-    today = Time.new.strftime("%m/%d/%Y")
-    @habit_instances = current_user.habit_instances.find(conditions: {date: today})
+    today = Time.new.strftime("%Y-%d-%m")
+    @habit_instances = current_user.habit_instances.where(date: today)
   end
 
   def show
-    @habit = current_user.habit_instances.find(params[:id])
-  end
-
-  def edit
-    @habit = current_user.habit_instances.find(params[:id])
+    @habit_instance = current_user.habit_instances.find(params[:id])
   end
 
   def update
-    @habit = current_user.habit_instances.find(params[:id])
+    @habit_instance = current_user.habit_instances.find(params[:id])
 
-    if @habit.update(habit_params)
-      redirect_to user_habits_path(current_user), notice: "Habit updated successfully!"
-    else
-      render "edit"
-    end
+    @habit.update(habit_params)
   end
 
   private

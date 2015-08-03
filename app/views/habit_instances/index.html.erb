@@ -1,0 +1,13 @@
+<h1>Daily Habits</h1>
+
+<ul>
+  <% @habit_instances.each do |habit_instance| %>
+    <% if habit_instance.complete == false %>
+      <li class="habits"><%= link_to habit_instance.habit.title, user_habit_path(current_user, habit_instance.habit) %> <%= link_to "Incomplete", "#" %></li>
+    <% else %>
+      <li class="habits"><%= link_to habit_instance.habit.title, user_habit_path(current_user, habit_instance.habit) %> <%= link_to "Complete", "#" %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<p><%= link_to "Add a Habit", new_user_habit_path(current_user) %></p>
