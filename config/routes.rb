@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     resources :habit_instances
   end
+
+  resources :habit_instances,
+    :member => { :toggle_complete => :put }
 end

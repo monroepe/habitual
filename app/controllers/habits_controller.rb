@@ -18,7 +18,7 @@ class HabitsController < ApplicationController
     @habit.user = current_user
 
     if @habit.save
-      redirect_to user_habits_path(current_user), notice: "Habit created successfully!"
+      redirect_to user_habit_instances_path(current_user), notice: "Habit created successfully!"
     else
       render "new"
     end
@@ -32,7 +32,7 @@ class HabitsController < ApplicationController
     @habit = current_user.habit.find(params[:id])
 
     if @habit.update(habit_params)
-      redirect_to user_habits_path(current_user), notice: "Habit updated successfully!"
+      redirect_to user_habit_instances_path(current_user), notice: "Habit updated successfully!"
     else
       render "edit"
     end
@@ -43,7 +43,7 @@ class HabitsController < ApplicationController
 
     @habit.destroy
 
-    redirect_to user_habits_path(current_user), notice: "Habit deleted successfully!"
+    redirect_to user_habit_instances_path(current_user), notice: "Habit deleted successfully!"
   end
 
   private

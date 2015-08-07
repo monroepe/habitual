@@ -13,10 +13,11 @@ class HabitInstancesController < ApplicationController
   end
 
   def update
-    @habit_instance = current_user.habit_instances.find(params[:id])
+    @habit_instance = HabitInstance.find(params[:id])
+    @habit_instance.complete = !@habit_instance.complete
+    @habit_instance.save
 
-    @habit_instance.update(habit_params)
-    redirect_to :back
+    redirect_to user_habit_instances_path(current_user)
   end
 
   private
