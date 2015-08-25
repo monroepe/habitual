@@ -3,7 +3,7 @@ module HabitInstanceHelper
 
   def create_habit_instances
     habits = current_user.habits
-    today = Time.new.strftime("%Y-%d-%m")
+    today = Time.new
 
     habits.each do |habit|
       if current_user.habit_instances.where(habit_id: habit.id).where(date: today) == []

@@ -4,8 +4,8 @@ class HabitInstancesController < ApplicationController
 
   def index
     self.create_habit_instances
-    today = Time.new.strftime("%Y-%d-%m")
-    @habit_instances = current_user.habit_instances.where(date: today)
+    today = Time.new
+    @habit_instances = current_user.habit_instances.where(date: today).order(date: :desc)
   end
 
   def show

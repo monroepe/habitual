@@ -5,10 +5,10 @@
 
     <% if habit_instance.complete == false %>
       <li class="habits"><%= link_to habit_instance.habit.title, user_habit_path(current_user, habit_instance.habit) %>
-      <%= link_to 'Complete', user_habit_instance_path(current_user, habit_instance), :url => { :controller => "habit_instances", :action => "update"}, method: :put %>
+      <%= link_to 'Complete', user_habit_instance_path(current_user, habit_instance), method: :put %>
       </li>
     <% else %>
-      <li class="habits"><%= link_to habit_instance.habit.title, user_habit_path(current_user, habit_instance.habit) %> <%= link_to 'Re-open', user_habit_instance_path(current_user, habit_instance), :url => { :controller => "habit_instances", :action => "update"}, method: :put %>
+      <li class="habits"><%= link_to habit_instance.habit.title, user_habit_path(current_user, habit_instance.habit) %> <%= link_to 'Re-open', user_habit_instance_path(current_user, habit_instance), method: :put %>
       </li>
     <% end %>
   <% end %>
